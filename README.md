@@ -37,6 +37,10 @@ For example:
 $ cat podcast.wav | ./run.sh
 ```
 
+**Attention**: Currently the only accepted format for voice data are
+uncompressed 16-bit signed little-endian samples (Linear PCM) with a sample rate
+of 16 kHz. This might be configurable in the future.
+
 ## Integration into Rhasspy
 
 Use the following configuration for your profile to integrate GCloudSpeech into
