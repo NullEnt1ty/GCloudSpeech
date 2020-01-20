@@ -34,7 +34,7 @@ be printed on standard output.
 For example:
 
 ```
-$ cat podcast.wav | ./run.sh
+$ cat podcast.wav | ./run.sh --language en-US
 ```
 
 **Attention**: Currently the only accepted format for voice data are
@@ -49,7 +49,8 @@ Rhasspy:
 ```json
 "speech_to_text": {
     "command": {
-        "program": "<path to run.sh>"
+        "program": "<path to run.sh>",
+        "arguments": ["--language", "<your language code>"]
     },
     "system": "command"
 },

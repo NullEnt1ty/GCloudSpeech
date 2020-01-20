@@ -14,4 +14,4 @@ else
   exit 1
 fi
 
-"$DIR/google-stt.py"
+"$DIR/google-stt.py" $@
