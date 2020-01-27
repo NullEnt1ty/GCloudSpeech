@@ -35,11 +35,9 @@ func main() {
 		log.Fatalf("Failed to recognize audio: %v", err)
 	}
 
-	fmt.Printf("Result count: %v\n", len(response.Results))
-
-	for _, result := range response.Results {
-		for _, alt := range result.Alternatives {
-			fmt.Printf("'%v', (confidence = %3f)", alt.Transcript, alt.Confidence)
-		}
+	if len(response.Results) == 0 || len(response.Results[0].Alternatives) == 0 {
+		log.Fatal("Failed to transcode audio.")
 	}
+
+	fmt.Print(response.Results[0].Alternatives[0].Transcript)
 }
