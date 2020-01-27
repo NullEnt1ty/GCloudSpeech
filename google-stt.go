@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -12,6 +13,9 @@ import (
 )
 
 func main() {
+	languageCodePtr := flag.String("language", "en-US", "set the language of the incoming voice data (e.g. 'en-US')")
+	flag.Parse()
+
 	content, _ := ioutil.ReadAll(os.Stdin)
 	ctx := context.Background()
 	client, err := speech.NewClient(ctx)
@@ -24,7 +28,7 @@ func main() {
 		Config: &speechpb.RecognitionConfig{
 			Encoding:        speechpb.RecognitionConfig_LINEAR16,
 			SampleRateHertz: 16000,
-			LanguageCode:    "de-DE",
+			LanguageCode:    *languageCodePtr,
 		},
 		Audio: &speechpb.RecognitionAudio{
 			AudioSource: &speechpb.RecognitionAudio_Content{Content: content},
